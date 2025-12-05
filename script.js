@@ -498,7 +498,7 @@ function updateResult() {
   const diffMs = gDate.setHours(0, 0, 0, 0) - today.setHours(0, 0, 0, 0);
   const days = Math.round(diffMs / (24 * 60 * 60 * 1000));
   if (days === 0) {
-    diffEl.textContent = "0 يوم";
+    diffEl.innerHTML = "0 يوم";
   } else {
     const absDays = Math.abs(days);
     const years = Math.floor(absDays / 365);
@@ -513,7 +513,7 @@ function updateResult() {
 
     const human = parts.length ? parts.join(" و ") : `${absDays} يوم`;
     const baseLabel = `${absDays} يوم${days > 0 ? " متبقي" : " مضى"}`;
-    diffEl.textContent = `${baseLabel} - تعادل ${human}`;
+    diffEl.innerHTML = `${baseLabel}<br/>تعادل ${human}`;
   }
 }
 
