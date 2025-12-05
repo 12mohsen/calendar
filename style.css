@@ -156,6 +156,14 @@ body {
     position: relative;
 }
 
+.result-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
 .result-weekday {
     font-size: 1.25rem;
     font-weight: 700;
@@ -181,9 +189,6 @@ body {
 }
 
 .edit-button {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
     padding: 4px 12px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.35);
@@ -199,19 +204,16 @@ body {
 
 /* Action button */
 .action-button {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 64px;
-    height: 64px;
+    position: static;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     border: none;
     background: radial-gradient(circle at 30% 20%, #ffffff, #d4d4d4 45%, #b0b0b0 100%);
     color: #111;
     font-size: 2rem;
     box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.85),
+        0 8px 20px rgba(0, 0, 0, 0.5),
         0 0 0 2px rgba(255, 255, 255, 0.9);
     cursor: pointer;
     display: flex;
@@ -220,7 +222,7 @@ body {
 }
 
 .action-button:active {
-    transform: translateX(-50%) scale(0.97);
+    transform: scale(0.97);
 }
 
 /* Modal */
@@ -351,11 +353,8 @@ body {
     }
 
     .action-button {
-        width: 56px;
-        height: 56px;
-        bottom: 12px;
-        left: auto;
-        right: 16px;
-        transform: none; /* لا نحتاج للتمركز الأفقي على الجوال */
+        width: 48px;
+        height: 48px;
+        font-size: 1.6rem;
     }
 }

@@ -32,17 +32,18 @@
             </section>
 
             <section class="result-card" aria-live="polite">
+                <div class="result-actions">
+                    <button class="edit-button" type="button" id="adjust-button">تعديل</button>
+                    <button class="action-button" type="button" id="convert-button" aria-label="تحويل التاريخ">
+                        🕋
+                    </button>
+                </div>
                 <div class="result-weekday" id="result-weekday">الجمعة</div>
                 <div class="result-hijri" id="result-hijri">1447/6/14</div>
                 <div class="result-hijri-month" id="result-hijri-month">جمادى الآخر</div>
                 <div class="result-diff" id="result-diff">0 يوم</div>
-                <button class="edit-button" type="button" id="adjust-button">تعديل</button>
             </section>
         </main>
-
-        <button class="action-button" type="button" id="convert-button" aria-label="تحويل التاريخ">
-            🕋
-        </button>
 
         <div class="modal-backdrop" id="adjust-modal" aria-hidden="true">
             <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="adjust-title">
