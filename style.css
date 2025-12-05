@@ -145,7 +145,7 @@ body {
     background: #ffffff;
     color: #111;
     border-radius: 24px;
-    padding: 22px 20px 18px;
+    padding: 22px 20px 56px; /* مساحة إضافية أسفل النص حتى لا يغطيه زر الكعبة */
     box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.8),
         0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -346,5 +346,11 @@ body {
         max-height: none;
         height: 100vh;
         box-shadow: none;
+    }
+
+    .action-button {
+        width: 56px;
+        height: 56px;
+        bottom: 12px;
     }
 }
