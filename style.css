@@ -352,5 +352,8 @@ body {
         width: 56px;
         height: 56px;
         bottom: 12px;
+        left: auto;
+        right: 16px;
+        transform: none; /* لا نحتاج للتمركز الأفقي على الجوال */
     }
 }
