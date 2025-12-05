@@ -497,8 +497,24 @@ function updateResult() {
   const today = new Date();
   const diffMs = gDate.setHours(0, 0, 0, 0) - today.setHours(0, 0, 0, 0);
   const days = Math.round(diffMs / (24 * 60 * 60 * 1000));
-  const label = days === 0 ? "0 يوم" : `${Math.abs(days)} يوم${days > 0 ? " متبقي" : " مضى"}`;
-  diffEl.textContent = label;
+  if (days === 0) {
+    diffEl.textContent = "0 يوم";
+  } else {
+    const absDays = Math.abs(days);
+    const years = Math.floor(absDays / 365);
+    const remainingAfterYears = absDays - years * 365;
+    const months = Math.floor(remainingAfterYears / 30);
+    const remDays = remainingAfterYears - months * 30;
+
+    const parts = [];
+    if (years > 0) parts.push(`${years} سنة`);
+    if (months > 0) parts.push(`${months} شهر`);
+    if (remDays > 0) parts.push(`${remDays} يوم`);
+
+    const human = parts.length ? parts.join(" و ") : `${absDays} يوم`;
+    const baseLabel = `${absDays} يوم${days > 0 ? " متبقي" : " مضى"}`;
+    diffEl.textContent = `${baseLabel} - تعادل ${human}`;
+  }
 }
 
 function initToggle() {
