@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>محول التاريخ - تقويم الساعة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="top-toggle">
+            <button class="toggle-btn active" data-mode="gregorian">ميلادي</button>
+            <button class="toggle-btn" data-mode="hijri">هجري</button>
+        </header>
+
+        <main class="content">
+            <section class="picker-container" aria-label="اختيار التاريخ الميلادي">
+                <div class="picker-column" data-type="year">
+                    <div class="picker-spacer"></div>
+                    <!-- العناصر تُحقن ديناميكياً بالـ JS -->
+                    <div class="picker-spacer"></div>
+                </div>
+                <div class="picker-column" data-type="month">
+                    <div class="picker-spacer"></div>
+                    <div class="picker-spacer"></div>
+                </div>
+                <div class="picker-column" data-type="day">
+                    <div class="picker-spacer"></div>
+                    <div class="picker-spacer"></div>
+                </div>
+                <div class="picker-highlight"></div>
+            </section>
+
+            <section class="result-card" aria-live="polite">
+                <div class="result-weekday" id="result-weekday">الجمعة</div>
+                <div class="result-hijri" id="result-hijri">1447/6/14</div>
+                <div class="result-hijri-month" id="result-hijri-month">جمادى الآخر</div>
+                <div class="result-diff" id="result-diff">0 يوم</div>
+            </section>
+            <button class="edit-button" type="button" id="adjust-button">تعديل</button>
+        </main>
+
+        <button class="action-button" type="button" id="convert-button" aria-label="تحويل التاريخ">
+            🕋
+        </button>
+
+        <div class="modal-backdrop" id="adjust-modal" aria-hidden="true">
+            <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="adjust-title">
+                <div class="modal-header">
+                    <h2 id="adjust-title">تعديل التاريخ</h2>
+                    <button type="button" class="modal-close" id="close-adjust">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="field-group">
+                        <label for="offset-input">إضافة / إنقاص أيام:</label>
+                        <input id="offset-input" type="number" value="0" />
+                        <small class="field-hint">استخدم القيم السالبة لإنقاص الأيام.</small>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-label">طول الشهر الهجري:</span>
+                        <div class="month-length-toggle">
+                            <button type="button" class="month-length-btn active" data-length="30">30 يوم</button>
+                            <button type="button" class="month-length-btn" data-length="29">29 يوم</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-action" id="apply-adjust">حفظ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
