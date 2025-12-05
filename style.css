@@ -75,7 +75,7 @@ body {
 .content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px; /* تقليل الفراغ لرفع البطاقة للأعلى قليلاً */
 }
 
 /* Picker (Number Picker) */
