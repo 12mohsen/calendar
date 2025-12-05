@@ -21,8 +21,7 @@ body {
 .app-wrapper {
     width: 100%;
     max-width: 420px;
-    height: 100vh;
-    max-height: 820px;
+    min-height: 100vh;
     background:
         repeating-linear-gradient(
             90deg,
@@ -38,7 +37,7 @@ body {
         0 20px 60px rgba(0, 0, 0, 0.85);
     padding: 24px 20px 96px;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto; /* السماح بالتمرير الرأسي داخل البطاقة الكاملة */
 }
 
 .top-toggle {
