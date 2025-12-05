@@ -21,7 +21,8 @@ body {
 .app-wrapper {
     width: 100%;
     max-width: 420px;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 820px;
     background:
         repeating-linear-gradient(
             90deg,
@@ -37,7 +38,7 @@ body {
         0 20px 60px rgba(0, 0, 0, 0.85);
     padding: 24px 20px 96px;
     position: relative;
-    overflow-y: auto; /* السماح بالتمرير الرأسي داخل البطاقة الكاملة */
+    overflow: hidden;
 }
 
 .top-toggle {
@@ -185,8 +186,24 @@ body {
 
 .result-diff {
     margin-top: 10px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #666;
+    max-height: 2.7em; /* سطرين تقريباً */
+    overflow-y: auto;
+    text-align: center;
+}
+
+.result-diff::-webkit-scrollbar {
+    width: 4px;
+}
+
+.result-diff::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.result-diff::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 999px;
 }
 
 .edit-button {
