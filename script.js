@@ -411,7 +411,8 @@ function gregorianToSimpleHijri(date) {
   const baseGregorian = new Date(2025, 11, 5); // 5 Dec 2025
   const baseHijri = { year: 1447, month: 6, day: 14 };
 
-  let diffDays = Math.round((date - baseGregorian) / msPerDay);
+  // استخدام floor بدلاً من round لتجنّب زيادة يوم بسبب الكسور الزمنية
+  let diffDays = Math.floor((date - baseGregorian) / msPerDay);
   diffDays += dayOffset;
 
   let hijriDay = baseHijri.day + diffDays;
