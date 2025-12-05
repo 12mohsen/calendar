@@ -36,7 +36,7 @@ body {
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.03),
         0 20px 60px rgba(0, 0, 0, 0.85);
-    padding: 24px 20px 32px;
+    padding: 24px 20px 96px;
     position: relative;
     overflow: hidden;
 }
