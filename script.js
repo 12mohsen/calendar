@@ -405,9 +405,10 @@ function attachTouchStepHandlers() {
         // تجاهل اللمسات الصغيرة جداً
         if (absDelta < 10) return;
 
-        // عدد الخطوات يعتمد على طول السحب (كل ~35px خطوة)، وحد أقصى 4 خطوات
-        const rawSteps = Math.floor(absDelta / 35) || 1;
-        const steps = Math.min(rawSteps, 4);
+        // عدد الخطوات يعتمد على طول السحب (كل ~22px خطوة)، مع حد أقصى أعلى للتحريك السريع
+        // سحبة قصيرة ≈ خطوة واحدة، سحبة أطول جداً قد تعطي حتى 8 خطوات دفعة واحدة
+        const rawSteps = Math.floor(absDelta / 22) || 1;
+        const steps = Math.min(rawSteps, 8);
 
         // سحب للأعلى => ننتقل لأسفل (تاريخ أكبر)، وسحب للأسفل => العكس
         const direction = deltaY < 0 ? 1 : -1;
