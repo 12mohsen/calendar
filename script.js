@@ -547,3 +547,11 @@ attachWheelStepHandlers();
 attachTouchStepHandlers();
 initToggle();
 initAdjustModal();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(() => {
+      // تجاهل أخطاء التسجيل
+    });
+  });
+}
