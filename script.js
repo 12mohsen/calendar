@@ -400,12 +400,20 @@ function attachTouchStepHandlers() {
             item.classList.contains("selected")
           );
 
+        const absDelta = Math.abs(deltaY);
+
         // تجاهل اللمسات الصغيرة جداً
-        if (Math.abs(deltaY) < 10) return;
+        if (absDelta < 10) return;
+
+        // عدد الخطوات يعتمد على طول السحب (كل ~35px خطوة)، وحد أقصى 4 خطوات
+        const rawSteps = Math.floor(absDelta / 35) || 1;
+        const steps = Math.min(rawSteps, 4);
 
         // سحب للأعلى => ننتقل لأسفل (تاريخ أكبر)، وسحب للأسفل => العكس
-        const step = deltaY < 0 ? 1 : -1;
-        let nextIndex = currentIndex === -1 ? 0 : currentIndex + step;
+        const direction = deltaY < 0 ? 1 : -1;
+        const totalStep = direction * steps;
+
+        let nextIndex = currentIndex === -1 ? 0 : currentIndex + totalStep;
         if (nextIndex < 0) nextIndex = 0;
         if (nextIndex >= items.length) nextIndex = items.length - 1;
 
