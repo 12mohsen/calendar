@@ -352,12 +352,19 @@ function attachWheelStepHandlers() {
 function attachTouchStepHandlers() {
   pickerColumns.forEach((col) => {
     let startY = null;
+    let startIndex = null;
 
     col.addEventListener(
       "touchstart",
       (e) => {
+        e.preventDefault();
         if (e.touches && e.touches.length > 0) {
           startY = e.touches[0].clientY;
+
+          const items = Array.from(col.querySelectorAll(".picker-item"));
+          startIndex = items.findIndex((item) =>
+            item.classList.contains("selected")
+          );
         }
       },
       { passive: false }
@@ -373,15 +380,17 @@ function attachTouchStepHandlers() {
         const deltaY = touch.clientY - startY;
         startY = null;
 
-        // تجاهل اللمسات الصغيرة جداً
-        if (Math.abs(deltaY) < 10) return;
-
+        // استخدم الفهرس عند بداية اللمس حتى لا تتراكم الحركات
         const items = Array.from(col.querySelectorAll(".picker-item"));
         if (!items.length) return;
 
-        const currentIndex = items.findIndex((item) =>
-          item.classList.contains("selected")
-        );
+        let currentIndex =
+          startIndex !== null && startIndex >= 0 ? startIndex : items.findIndex((item) =>
+            item.classList.contains("selected")
+          );
+
+        // تجاهل اللمسات الصغيرة جداً
+        if (Math.abs(deltaY) < 10) return;
 
         // سحب للأعلى => ننتقل لأسفل (تاريخ أكبر)، وسحب للأسفل => العكس
         const step = deltaY < 0 ? 1 : -1;
