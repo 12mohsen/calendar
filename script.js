@@ -360,7 +360,7 @@ function attachTouchStepHandlers() {
           startY = e.touches[0].clientY;
         }
       },
-      { passive: true }
+      { passive: false }
     );
 
     col.addEventListener(
