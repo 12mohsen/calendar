@@ -346,6 +346,17 @@ function attachWheelStepHandlers() {
       },
       { passive: false }
     );
+
+    // منع التمرير الافتراضي أثناء السحب حتى لا يتحرك العمود مرتين (نحن نتحكم به برمجياً)
+    col.addEventListener(
+      "touchmove",
+      (e) => {
+        if (e.touches && e.touches.length > 0) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
   });
 }
 
@@ -407,6 +418,9 @@ function attachTouchStepHandlers() {
           updateSelectedItem(col);
           updateResult();
         }, 180);
+
+        // إعادة ضبط الفهرس لبداية الحركة القادمة
+        startIndex = null;
       },
       { passive: true }
     );
